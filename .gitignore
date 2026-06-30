@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtualenv
+.venv/
+venv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Env / secrets
+.env
+
+# Generated reports (the *_example.md version is committed)
+reports/redteam_report.md
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

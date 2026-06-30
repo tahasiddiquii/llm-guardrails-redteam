@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-guardrails-redteam"
+version = "0.1.0"
+description = "Guardrails + red-team harness for LLM apps: PII detection/redaction, prompt-injection & jailbreak defense, and a scored red-team attack suite. Runs fully offline."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Taha Siddiqui", email = "work.tahasiddiqui@gmail.com" }]
+keywords = ["llm", "guardrails", "red-team", "prompt-injection", "jailbreak", "pii", "llm-security", "observability"]
+
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.2",
+    "langfuse>=2.0",
+    "rich>=13.7",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+presidio = ["presidio-analyzer>=2.2", "presidio-anonymizer>=2.2"]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.2",
+    "pre-commit>=3.7",
+]
+
+[project.scripts]
+llm-guardrails = "llm_guardrails.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/tahasiddiquii/llm-guardrails-redteam"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_guardrails"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+ignore = ["E501", "B008", "UP042"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+addopts = "-q"
+testpaths = ["tests"]

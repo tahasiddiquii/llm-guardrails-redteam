@@ -1,0 +1,32 @@
+services:
+  # Default: run the red-team suite + defense gate, fully offline.
+  redteam:
+    build: .
+    command: ["llm-guardrails", "redteam"]
+
+  # Optional self-hosted Langfuse to view scan traces + scores:
+  #   docker compose --profile observability up
+  # then set LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY / LANGFUSE_HOST=http://localhost:3000
+  langfuse:
+    image: langfuse/langfuse:2
+    profiles: ["observability"]
+    depends_on:
+      - langfuse-db
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@langfuse-db:5432/postgres
+      NEXTAUTH_SECRET: dev-secret-change-me
+      SALT: dev-salt-change-me
+      NEXTAUTH_URL: http://localhost:3000
+
+  langfuse-db:
+    image: postgres:16-alpine
+    profiles: ["observability"]
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - langfuse-db-data:/var/lib/postgresql/data
+
+volumes:
+  langfuse-db-data:
