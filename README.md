@@ -6,7 +6,7 @@
 > offline, deterministic, **zero API keys**.
 
 [![CI](https://github.com/tahasiddiquii/llm-guardrails-redteam/actions/workflows/ci.yml/badge.svg)](https://github.com/tahasiddiquii/llm-guardrails-redteam/actions/workflows/ci.yml)
-![python](https://img.shields.io/badge/python-3.12-blue)
+![python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
 Shipping an LLM feature means defending it: stripping PII before it reaches a model

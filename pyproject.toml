@@ -7,7 +7,7 @@ name = "llm-guardrails-redteam"
 version = "0.1.0"
 description = "Guardrails + red-team harness for LLM apps: PII detection/redaction, prompt-injection & jailbreak defense, and a scored red-team attack suite. Runs fully offline."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Taha Siddiqui", email = "work.tahasiddiqui@gmail.com" }]
 keywords = ["llm", "guardrails", "red-team", "prompt-injection", "jailbreak", "pii", "llm-security", "observability"]
@@ -15,7 +15,7 @@ keywords = ["llm", "guardrails", "red-team", "prompt-injection", "jailbreak", "p
 dependencies = [
     "pydantic>=2.7",
     "pydantic-settings>=2.2",
-    "langfuse>=2.0",
+    "langfuse>=3.0",
     "rich>=13.7",
     "python-dotenv>=1.0",
 ]
@@ -39,7 +39,7 @@ packages = ["src/llm_guardrails"]
 
 [tool.ruff]
 line-length = 110
-target-version = "py312"
+target-version = "py311"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
